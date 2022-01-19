@@ -1,0 +1,160 @@
+article.system {
+  > section {
+    > article.link {
+      width: 400px;
+      height: 70px;
+      //background: #303E79;
+      //background-color: red;
+      //background-color: yellow;
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      cursor: pointer;
+
+      > header {
+        padding-left: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.active-single {
+          background-color: #303E79;
+        }
+
+        > div {
+          > img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+
+      > section {
+        padding-left: 26px;
+        padding-right: 101px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.active-single {
+          background-color: #303E79;
+
+          > div {
+            > a {
+              color: white;
+            }
+          }
+        }
+
+        &.active {
+          > div {
+            > a {
+              color: white;
+            }
+          }
+        }
+
+        > div {
+          > a {
+            font-size: 16px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #838A9D;
+            line-height: 24px;
+            text-decoration: none;
+          }
+        }
+      }
+
+      > footer {
+        &.active-single {
+          > div {
+            background-color: #303E79;
+            border-radius: 0px 100px 100px 0px;
+          }
+        }
+
+        &.active {
+          > div {
+            background-color: #303E79;
+            border-radius: 100px 100px 0px 0px;
+          }
+        }
+
+        > div {
+          width: 70px;
+          height: 70px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          > img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    > article.link-level-2 {
+      background-color: #303E79;
+      padding-bottom: 129px;
+
+
+      > section {
+        > article {
+          cursor: pointer;
+          height: 50px;
+          padding-left: calc(70px);
+          display: flex;
+          align-items: center;
+          &:hover{
+            background-color: #5162AA;
+          }
+          &.active {
+            background-color: #5162AA;
+          }
+
+          > section {
+            padding-left: 70px;
+            width: 170px;
+            //background-color: yellow;
+            > div {
+              > a {
+                text-decoration: none;
+                font-size: 16px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #A6AAB8;
+                line-height: 24px;
+              }
+            }
+          }
+          >footer {
+            //margin-left: 106px;
+            >div {
+              >img {
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+        }
+        > div{
+          &.blank {
+            margin-top: -1px;
+            width: 260px;
+            height: 1px;
+            margin-left: 70px;
+            background-color: #445395;
+          }
+          &.active {
+
+          }
+        }
+      }
+    }
+  }
+}

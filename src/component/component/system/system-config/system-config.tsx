@@ -1,8 +1,12 @@
 import React,{FC,useState,useEffect,Fragment} from "react";
-import {useNavigate,useLocation} from 'react-router-dom'
+import {useNavigate, useLocation, Route, Routes} from 'react-router-dom'
 import {useLazyQuery} from "@apollo/react-hooks";
 import MediaQuery from 'react-responsive'
 import './system-config.scss'
+import ConfigUpdate from "./config-update/config-update";
+import ConfigLicense from "./config-license/config-license";
+import ConfigReboot from "./config-reboot/config-reboot";
+import ConfigParam from "./config-param/config-param";
 
 interface SystemConfigProps {
 
@@ -26,7 +30,15 @@ export const SystemConfig:FC<SystemConfigProps>=(props)=>{
     return <Fragment>
         <MediaQuery query='(min-device-width: 1200px)'>
             <article className={"system-config"}>
-                PC端：系统配置
+                <section>
+                    <Routes>
+                        <Route path={"update"} element={<ConfigUpdate/>}/>
+                        <Route path={"license"} element={<ConfigLicense/>}/>
+                        <Route path={"reboot"} element={<ConfigReboot/>}/>
+                        <Route path={"param"} element={<ConfigParam/>}/>
+
+                    </Routes>
+                </section>
             </article>
         </MediaQuery>
         <MediaQuery query='(max-device-width: 1200px)'>

@@ -1,8 +1,10 @@
 import React,{FC,useState,useEffect,Fragment} from "react";
-import {useNavigate,useLocation} from 'react-router-dom'
+import {useNavigate, useLocation, Routes, Route} from 'react-router-dom'
 import {useLazyQuery} from "@apollo/react-hooks";
 import MediaQuery from 'react-responsive'
 import './system-session.scss'
+import SessionTask from "./session-task/session-task";
+import SessionOnline from "./session-online/session-online";
 
 interface SystemSessionProps {
 
@@ -26,6 +28,12 @@ export const SystemSession:FC<SystemSessionProps>=(props)=>{
     return <Fragment>
         <MediaQuery query='(min-device-width: 1200px)'>
             <article className={"system-session"}>
+                <section>
+                    <Routes>
+                        <Route path={"task"} element={<SessionTask/>}/>
+                        <Route path={"online"} element={<SessionOnline/>}/>
+                    </Routes>
+                </section>
                 PC端:系统会话
             </article>
         </MediaQuery>

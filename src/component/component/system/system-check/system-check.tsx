@@ -1,8 +1,12 @@
 import React,{FC,useState,useEffect,Fragment} from "react";
-import {useNavigate,useLocation} from 'react-router-dom'
+import {useNavigate, useLocation, Route, Routes} from 'react-router-dom'
 import {useLazyQuery} from "@apollo/react-hooks";
 import MediaQuery from 'react-responsive'
 import './system-check.scss'
+import CheckLog from "./check-log/check-log";
+import CheckProcess from "./check-process/check-process";
+import CheckReport from "./check-report/check-report";
+import CheckHealth from "./check-health/check-health";
 
 interface SystemCheckProps {
 
@@ -26,7 +30,14 @@ export const SystemCheck:FC<SystemCheckProps>=(props)=>{
     return <Fragment>
         <MediaQuery query='(min-device-width: 1200px)'>
             <article className={"system-check"}>
-                PC端：系统诊断
+                <section>
+                    <Routes>
+                        <Route path={"log"} element={<CheckLog/>}/>
+                        <Route path={"process"} element={<CheckProcess/>}/>
+                        <Route path={"report"} element={<CheckReport/>}/>
+                        <Route path={"health"} element={<CheckHealth/>}/>
+                    </Routes>
+                </section>
             </article>
         </MediaQuery>
         <MediaQuery query='(max-device-width: 1200px)'>

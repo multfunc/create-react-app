@@ -71,17 +71,32 @@ module.exports = {
                     }
                 ]
             },
+            // {
+            //     test: /\.(png|jpg|gif)$/,
+            //     use: [
+            //         {
+            //             loader: 'file-loader',
+            //             options: {
+            //                 name: '[sha512:hash:base64:7].[ext]'
+            //             }
+            //         }
+            //     ]
+            // } // by junfenghe 2021-12-06
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[sha512:hash:base64:7].[ext]'
-                        }
-                    }
-                ]
-            }
+                type: 'asset/resource',
+                generator: {
+                    filename: 'static/[hash][ext][query]'
+                }
+            },
+            {
+                test: /\.svg/,
+                type: 'asset/inline'
+            },
+            // {
+            //     test: /\.(txt|pdf|excel)$/,
+            //     type: 'asset/source'
+            // }
         ]
     },
     resolve: {
@@ -89,7 +104,8 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "build"),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        assetModuleFilename: "images/[hash][ext][query]" // by junfenghe 2021-12-06
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -98,5 +114,12 @@ module.exports = {
         new CleanWebpackPlugin({
             path: path.join(__dirname, 'build')
         })
-    ]
+    ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "public")
+        },
+        historyApiFallback: true,
+        port: 3000,
+    }
 }
